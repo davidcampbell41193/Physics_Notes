@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{k.p Perturbation Theory}
+\author{David Campbell }
+\date{January 2023}
+
+\begin{document}
+%\newcommand{\mathbf{}[1]{\textbf{#1}}
+\maketitle
+
+\section{Introduction}
+Suppose we have a periodic potential function. That is 
+
+\begin{equation}
+    V(\mathbf{r}) = V(\mathbf{r}+\mathbf{R})
+\end{equation}
+The vector $\mathbf{R}=n_1 \mathbf{a_1} + n_2 \mathbf{a_2} + n_3\mathbf{a_3}$ is a linear combination the primitive lattice vectors, $\left\{ \mathbf{a_1}, \mathbf{a_2}, \mathbf{a_3}\right\}$, and $n_1, n_2, n_3 \in \mathcal{Z}$. Bloch's theorem applies and we can write the spacial wave-function as 
+\begin{equation}
+    \psi_{n, \mathbf{k}}(\mathbf{r}) = e^{i \mathbf{k} \cdot \mathbf{r} } u_{n, \mathbf{k}}(\mathbf{r})
+\end{equation}
+where $\mathbf{k}$ is in the first Brillouin zone. 
+
+The Block wave-function satisfy then energy-eigenvalue equation.
+\begin{equation}\label{Energy_Eigenvalue}
+    \left( -\frac{\hbar^2}{2m}\mathbf{\nabla}^2 + V(\mathbf{r}) \right)  \psi_{n, \mathbf{k}}(\mathbf{r})  = E_{n, \mathbf{k} } \psi_{n, \mathbf{k}}(\mathbf{r})
+\end{equation}
+and the Bloch wave functions satisfy the energy eigenvalue equation. Using the vector identity 
+\begin{equation}
+    \mathbf{\nabla}^2(fg)= \mathbf{\nabla}^2f + 2 \mathbf{\nabla}f \cdot \mathbf{\nabla}g + \mathbf{\nabla}^2 g
+\end{equation}
+we find 
+
+\begin{eqnarray}\label{Vector-Identity}
+    \nabla^2\psi_{n, \mathbf{k}}(\mathbf{r}) & = & e^{i \mathbf{k} \cdot \mathbf{r}}\left(\nabla^2 u_{n,\mathbf{k}} (\mathbf{r}) + 2 i \mathbf{k} \cdot \mathbf{\nabla} u_{n,\mathbf{k}}(\mathbf{r})  - k^2 u_{n, \mathbf{k}} (\mathbf{r}) \right) \nonumber \\
+    & = & - e^{i \mathbf{k} \cdot \mathbf{r}} \left( \left(\frac{\mathbf{\hat{p}}}{\hbar} \right)^2  + 2 \frac{ \mathbf{k} \cdot \mathbf{\hat{p}} }{\hbar} + k^2 \right) u_{n, \mathbf{k}}(\mathbf{r})
+\end{eqnarray}
+using the operator identity $\mathbf{\hat{p}}=-i\hbar \mathbf{\nabla}$. Not the the momentum operator, $\mathbf{\hat{p}}$, has already acted on the phase factor, $ e^{\mathbf{k}\cdot \mathbf{r}}$, and does not commute. Plugging in Eq. \ref{Vector-Identity} to Eq. \ref{Energy_Eigenvalue} we find
+\begin{eqnarray}
+    \left( \frac{\mathbf{\hat{p}}^2}{2m}  + \hbar \frac{\mathbf{k}\cdot \mathbf{\hat{p}}}{m} + \frac{\hbar^2 k^2 }{2m} + V(\mathbf{r}) \right) u_{n, \mathbf{k}} (\mathbf{r}) & = & E_{n, \mathbf{k}} u_{n, \mathbf{k}} ( \mathbf{r} ) \nonumber \\
+    \left( \frac{\left( \mathbf{\hat{p}} + \hbar \mathbf{k} \right)^2}{2m} + V( \mathbf{r} ) \right) & = & E_{n, \mathbf{k}} u_{n, \mathbf{k}} ( \mathbf{r} )
+\end{eqnarray}
+that the phase factor $e^{i \mathbf{k} \cdot \mathbf{r}}$ cancels out.
+
+We can now define an new Hamiltonian that depends on $\mathbf{k}$.
+\begin{eqnarray}
+    H_{\mathbf{k}} & = & H_0 + H_{\mathbf{k}}' \\
+    H_0 & = & \frac{p^2}{2m} + V(\mathbf{r}) \\
+    H_{\mathbf{k}}' & = & \hbar \frac{\mathbf{k}\cdot \mathbf{\hat{p}}}{m} + \frac{\hbar^2 k^2 }{2m}
+\end{eqnarray}
+Clearly the perturbation is zero when $\mathbf{k}=0$, and for small $\mathbf{k}$ us can use perturbation theory.
+\begin{eqnarray}
+    E_{n, \mathbf{k} } & = & E_{n, \mathbf{0}} + E_{n , \mathbf{k}}^{(1)} + E_{n, \mathbf{k}}^{(2)}
+\end{eqnarray}
+\end{document}
